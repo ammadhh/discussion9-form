@@ -1,58 +1,91 @@
-  /* Create an accessible color palette using var()function */
-  /* https://www.w3schools.com/css/css3_variables.asp */
-  
-  form {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    border: 1px solid #ccc;
-    border-radius: 16px;
-    width:70%;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #702082;
-    background: #CFC096;
-  }
+:root {
+  --primary-bg-color: white;
+  --form-bg-color: white;
+  --accent-color: #4a90e2;
+  --text-color: black;
+  --submit-bg-color: darkgreen;
+  --submit-hover-bg-color: green;
+  --border-color: #ddd;
+}
+body {
+  background-color: var(--primary-bg-color);
+  background: linear-gradient(to right, #4a90e2 0%, #fcb69f 100%);
+  font-family: 'Ojuju', sans-serif;
+}
 
-  .radio {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    /* background: #575294; */
-    color: #702082;
-  }
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  width: 70%;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: var(--form-bg-color);
+  color: var(--text-color);
+}
 
-  #name {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    background: #CFC096;
-    color: #9B9A6D;
-  }
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
 
-  #message {
-    width: 100%;
-    padding: 10px;
-    resize: vertical;
-  }
+.radio {
+  grid-column: 1 / -1; /* Make radio buttons span full width */
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+}
 
-  input,
-  textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-  }
+input[type='text'],
+#name,
+textarea,
+#message {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--primary-bg-color);
+  color: var(--text-color);
+}
 
-  input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+input[type='submit'] {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--submit-bg-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  input[type="submit"]:hover {
-    background-color: #45a049;
-  }
+input[type='submit']:hover {
+  background-color: var(--submit-hover-bg-color);
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  border: none;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+.emoji-text {
+  font-family: 'Noto Color Emoji', serif;
+}
